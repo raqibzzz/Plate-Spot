@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Plate Spot</title>
+	<link href="https://fonts.googleapis.com/css?family=MADE+Sunflower&display=swap" rel="stylesheet">
+    <style>
+				body {
+			margin: 0;
+			padding: 0;
+      text-align: left;
+			font-family: 'Courier New', Courier, monospace;
+		}
+    h1 {
+
+			font-size: 100px;
+			margin-bottom: 40px;
+			text-align: left;
+			color: #F0A04B;
+			
+		}
+     h2 {
+			font-size: 50px;
+			margin: 0;
+			text-align: left;
+      color: #183A1D;
+		}
+		 h3 {
+			font-size: 14px;
+			margin: 20px 0 10px 0;
+			text-align: left;
+		}
+    #resultTable {
+			
+			border-collapse: collapse;
+			width: 100%;
+			text-align: left;
+		}
+
+		#resultTable th {
+			background-color: #F0A04B;
+      text-align: left;
+			font-size: 20px;
+			font-weight: bold;
+			padding: 10px;
+			border-bottom: 2px solid #ddd;
+		}
+
+		#resultTable td {
+			font-size: 16px;
+      text-align: left;
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+		}
+
+		#resultTable tr:hover {
+			background-color: #f5f5f5;
+		}
+
+    .left-column {
+        flex: 1;
+        justify-content: start;
+        align-items: start;
+        margin-left: 50px;
+        padding-right: 30px;
+    }
+
+    .right-column {
+      flex: 1;
+        justify-content: start;
+        align-items: start;
+        margin-right: 50px;
+    }
+
+    .paragraph
+    {
+      font-size: 20px;
+      margin: 20px 0 10px 0;
+      text-align: left;
+    }
+
+    .custom-heading {
+      font-size: 100px;
+      margin-bottom: 40px;
+      text-align: left;
+      color: #F0A04B;
+      
+    }
+
+		.navbar {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #fff6c6;
+			padding: 1em;
+		}
+
+		.navbar a {
+			padding: 0.5em;
+			margin: 0 50px; /* change the margin value to add space between the links */
+			border-radius: 10px;
+			
+			color: #183A1D; /* change the text color to #183A1D */
+			font-size: 1em;
+			font-weight: bold;
+			text-decoration: none;
+			cursor: pointer;
+			outline: none;
+			border: none;
+		}
+
+		.navbar a:hover {
+			background-color: #FEFBE9;
+			color: #183A1D;
+		}
+		.first-section {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+			height: 100vh;
+			background-color: rgb(18, 18, 98);
+			color: #E1EEDD;
+			
+		}
+		
+
+    .first-section {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .second-section {
+      padding-top: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* change grid to two columns */
+      justify-content: center;
+      align-items: start;
+      height: 80vh;
+      background-color: #fff6c6;
+      gap: 20px; /* add gap between columns */
+      
+    }
+
+    .second-section {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .third-section {
+      flex: 1;
+      justify-content: start;
+      align-items: start;
+      padding-left: 50px;
+      padding-top: 50px;
+      height: 80vh;
+      background-color: rgb(18, 18, 98);
+      
+    }
+
+    
+    .third-section h1
+    {
+      font-size: 45px;
+      color: #F0A04B;
+    }
+    .third-section h2
+    {
+      color: #fff6c6;
+    }
+    .third-section h3
+    {
+      color: #fff6c6;
+    }
+
+  
+    .grid-container {
+      
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      justify-content: start; /* added property */
+    }
+
+    .grid-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        border: 0px solid black;
+        text-align: right; /* added property */
+    }
+
+    .grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    li {color: #f2f2f2;}
+
+
+
+  </style>
+  </head>
+  <body>
+      <!-- Navigation bar -->
+      <nav class="navbar">
+        <a href="/Client Side/view/Pages/home.html">Home</a>
+        <a href = "/Client Side/view/Pages/Searches/Name Search/name_search.html">Name Search</a>
+
+        <a href="/Client Side/view/Pages/Searches/Cuisine Search/cuisine_search.html">Cuisine Search</a>
+        <a href="/Client Side/view/Pages/Searches/Mood Search/mood_search.html">Mood Search</a>
+        <a href="/Client Side/view/Pages/Searches/Rating Search/rating_search.html">Rating Search</a>
+        <a href="/Client Side/view/Pages/Maps/maps.html">Maps</a>
+      </nav>
+      <section class="first-section">
+
+          <div class="left-column">
+            <h1 class="custom-heading" id="restaurant_name">Fabulous Foods</h1>
+            <div id="resultDiv">
+              <h2></h2>
+                <table id="result">
+                  <tr>
+                    <tr>
+                      <th>Cuisine</th>
+                      <th>Location</th>
+                      <th>Mood</th>
+                      <th>Rating</th>
+                    </tr>
+                  </tr>
+                </table>
+            </div>
+          </div>
+
+
+
+
+
+          <div class="right-column">
+              <div class="grid-container" style="padding-right: 100px;">
+                  <div class="grid-item">
+                    <img src="/Client Side/Photos/36375973.png" alt="Image 1">
+                  </div>
+                  <div class="grid-item">
+                    <img src="/Client Side/Photos/72546327_398667917753201_4749695455225446400_n.jpg" alt="Image 2">
+                  </div>
+                  <div class="grid-item">
+                    <img src="/Client Side/Photos/Cojones.jpg" alt="Image 3">
+                  </div>
+                  <div class="grid-item">
+                    <img src="/Client Side/Photos/CojonesTacosTequila-StJohns-NL.webp" alt="Image 4">
+                  </div>
+                  <div class="grid-item">
+                    <img src="/Client Side/Photos/DSC_1599.JPG" alt="Image 5">
+                  </div>
+                  <div class="grid-item">
+                    <img src="/Client Side/Photos/huge.jpg" alt="Image 6">
+                  </div>
+                </div>
+          </div>
+      </section> 
+
+
+
+
+      
+
+      <section class="second-section">
+          <div class="left-column">
+            <div class = "paragraph">
+              <h2>Reviews</h2>
+              <div id="resultDiv">
+                <h2></h2>
+                  <table id="result-list">
+                    <tr>
+                      <tr>   
+                        <th>Review</th>
+                      </tr>
+                    </tr>
+                  </table>
+              </div>
+              <div>
+                <br>
+                <textarea rows="6" cols="50" placeholder="Enter your review here"></textarea>
+              </div>
+              
+            </div>
+          </div>
+          <div class="right-column">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2692.17791609715!2d-52.725814223701526!3d47.56432667118594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0ca39811671267%3A0xd3a97eb185abc65f!2sFabulous%20Foods%20Limited!5e0!3m2!1sen!2sca!4v1681522347579!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+      </section>  
+
+
+
+
+
+
+      <section class="third-section">
+        <h2>Menu</h2>
+        <h3>Appetizers</h3>
+        <ul>
+          <li>Seafood Chowder with Fresh Atlantic Seafood</li>
+          <li>Battered Fish and Chips with Tartar Sauce</li>
+          <li>Moose Sliders with Cranberry Chutney</li>
+          <li>Brewis with Pork Scrunchions and Molasses</li>
+        </ul>
+        <h3>Entrees</h3>
+        <ul>
+          <li>Jiggs Dinner - Salt Beef with Root Vegetables and Pease Pudding</li>
+          <li>Flipper Pie - Savory Pie with Seal Meat</li>
+          <li>Caribou Stew with Potatoes and Carrots</li>
+          <li>Grilled Cod with Lemon Butter and Herbs</li>
+        </ul>
+        <h3>Side Dishes</h3>
+        <ul>
+          <li>Bakeapple Salad with Blueberries and Walnuts</li>
+          <li>Peas Pudding with Savory Pork Gravy</li>
+          <li>Savory Duff with Butter and Molasses</li>
+          <li>Boiled Potatoes with Parsley Butter</li>
+        </ul>
+        <h3>Drinks</h3>
+        <ul>
+          <li>Iceberg Beer - Made with Water from Icebergs</li>
+          <li>Screech Rum - A Dark Rum from Newfoundland</li>
+          <li>Bakeapple Martini - Vodka with Cloudberry Liqueur</li>
+          <li>Partridgeberry Tea - Herbal Tea with Berries</li>
+        </ul>
+      </section>
+      <script src="/Client Side/view/Pages/Restaurants/reviews/reviews.js"></script>
+  </body>
